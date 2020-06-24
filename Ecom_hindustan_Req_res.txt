@@ -1,4 +1,5 @@
  XML Request from Paysecure is--
+
  <paysecure>
  <card_no>6071590100000018</card_no>
  <card_exp_date>122024</card_exp_date>
@@ -10,7 +11,8 @@
  </paysecure>
  
  
- Response for Auth_Initiate is <paysecure>
+ Response for Auth_Initiate is 
+ <paysecure>
 <issuer_guid>22703690-b94e-4ff8-813f-6b737457a41a</issuer_guid>
 <Url_Id>2a3aeff1-23dc-49e8-8aaa-851f895b32bf</Url_Id>
 <cardholder_id>254829924</cardholder_id>
@@ -21,14 +23,24 @@
 after sent successful otp to customer 
 
  XML Request from Paysecure(auth resut request) is--
+
  <paysecure>
  <guid>22703690-b94e-4ff8-813f-6b737457a41a</guid>
  <tran_id>500000000000000000000002450460</tran_id>
+
+ //npci ip address  
  <shopper_ip_address>10.10.27.5</shopper_ip_address>
+ //npci country code 
  <shopper_country_code>999</shopper_country_code>
+ 
  </paysecure>
  
- Response for Auth_Results is <paysecure>
+
+
+ //this is from our side 
+
+ Response for Auth_Results is 
+ <paysecure>
 <auth_method>OTP</auth_method>
 <status>SUCCESS</status>
 <errorcode>0</errorcode>

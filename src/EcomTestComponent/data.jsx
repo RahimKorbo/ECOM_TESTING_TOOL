@@ -1,8 +1,8 @@
 
 export const langCode = [
-    { text: 'EN', value: 1 },
-    { text: 'LS', value: 2 },
-    { text: 'Other', value: 3 }
+    { text: 'EN', value: 'EN' },
+    { text: 'LS', value: 'LS' },
+    { text: 'Other', value: 'X' }
 ];
 
 
