@@ -11,11 +11,15 @@ import {
     requiredValidator, cardValidator, cvcValidator
 } from './validators.jsx'
 
-import { TabStrip, TabStripTab } from '@progress/kendo-react-layout'
+import { TabStrip, TabStripTab } from '@progress/kendo-react-layout';
+
+import { Link } from "react-router-dom";
 
 import {
     langCode, Cardholderstatus, requesttype
 } from './data.jsx'
+
+
 import { auth_init_call } from './Auth_init_Calls.js';
 
 class EcomTestClient extends React.Component {
@@ -40,11 +44,11 @@ class EcomTestClient extends React.Component {
 
         console.log(dataItem)
         console.log(dataItem.langCode.text)
-       // console.log(dataItem.requestType)
+        // console.log(dataItem.requestType)
 
         // alert(JSON.stringify(dataItem, null, 4));
 
-        
+
         auth_init_call(dataItem).then(res => {
             if (res.status === 200) {
                 alert("response" + res)
@@ -55,17 +59,47 @@ class EcomTestClient extends React.Component {
         })
 
     }
+
+
+    handleSubmitOTPAuthServlet = (dataItem) => {
+
+
+        console.log(dataItem)
+        // console.log(dataItem.requestType)
+
+        alert(JSON.stringify(dataItem, null, 4));
+
+
+
+
+    }
+
+    handleSubmitOTPServieURL = (dataItem) => {
+
+
+        console.log(dataItem)
+        // console.log(dataItem.requestType)
+
+        alert(JSON.stringify(dataItem, null, 4));
+
+
+
+
+    }
+
     render() {
 
         return (
             <div style={{
-                width: 480,
+                width: 780,
                 margin: 'auto',
-                padding: '4px 10px',
+                padding: '14px 10px',
                 boxShadow: '0 1px 5px 0 rgba(0, 0, 0, 0.26), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.08)'
             }}
             >
                 <h2>ECOM Test Client</h2>
+                <Link to="/OTPServiceURL">OTP Service URL</Link>
+                
                 <TabStrip selected={this.state.selected} onSelect={this.handleSelect}>
 
                     <TabStripTab title="Auth_Initiate">
@@ -113,6 +147,8 @@ private String requestType; */}
                                 data={requesttype}
                                 validator={requiredValidator}
                             /> */}
+                                       
+                                        
                                         <Field
                                             id={'userId'}
                                             name={'userId'}
@@ -209,9 +245,181 @@ private String requestType; */}
                     <TabStripTab title="Auth_Result">
                         <p>Tab 2 Content</p>
                     </TabStripTab>
-                    <TabStripTab title="Tab 3 Title">
-                        <p>Tab 3 Content</p>
+                    <TabStripTab title="OTP Service URL">
+                        <Form
+                            onSubmit={this.handleSubmitOTPServieURL}
+                            render={(formRenderProps) => (
+                                <FormElement style={{ width: 500 }} horizontal={true}>
+                                    <fieldset className={'k-form-fieldset'}>
+                                        {/* <legend className={'k-form-legend'}>Ecom Test Client</legend> */}
+
+                                        {/* <Field
+                                id={'requestType'}
+                                name={'requestType'}
+                                label={'Request Type'}
+                                component={FormDropDownList}
+                                data={requesttype}
+                                validator={requiredValidator}
+                            /> */}
+                                        {/* private String cardNo;
+
+private String expDate;
+
+private String cardHolderStatus;
+
+private String cvv;
+
+private String langCode;
+
+private String tranId;
+
+private String hkey;
+
+private String userId;
+
+private String password;
+
+private String requestType; */}
+
+                                        {/* <Field
+                                id={'requesttype'}
+                                name={'requesttype'}
+                                label={'Request Type'}
+                                component={FormComboBox}
+                                textField={'text'}
+                                data={requesttype}
+                                validator={requiredValidator}
+                            /> */}
+                                        <Field
+                                            id={'AccuCardholderId'}
+                                            name={'AccuCardholderId'}
+                                            label={'AccuCardholderId'}
+                                            hint={'Hint: Hint message aligned start'}
+                                            component={FormInput}
+                                            validator={requiredValidator}
+                                        />
+
+                                        <Field
+                                            id={'AccuGuid'}
+                                            name={'AccuGuid'}
+                                            label={'AccuGuid'}
+                                            hint={'Hint: Hint message aligned start'}
+                                            component={FormInput}
+                                            validator={requiredValidator}
+                                        />
+
+                                        <Field
+                                            id={'session'}
+                                            name={'session'}
+                                            label={'session'}
+                                            hint={'Hint: Hint message aligned start'}
+                                            component={FormInput}
+                                            validator={requiredValidator}
+                                        />
+
+                                        <Field
+                                            id={'AccuReturnURL'}
+                                            name={'AccuReturnURL'}
+                                            label={'AccuReturnURL'}
+                                            hint={'Hint: Hint message aligned start'}
+                                            component={FormInput}
+                                            validator={requiredValidator}
+                                        />
+
+                                        <Field
+                                            id={'AccuRequestId'}
+                                            name={'AccuRequestId'}
+                                            label={'AccuRequestId'}
+                                            hint={'Hint: Hint message aligned start'}
+                                            component={FormInput}
+                                            validator={requiredValidator}
+                                        />
+
+
+
+
+
+                                        <div className="k-form-buttons">
+                                            <Button
+                                                primary={true}
+                                                type={'submit'}
+                                                disabled={!formRenderProps.allowSubmit}
+                                            >
+                                                Submit
+                                </Button>
+                                            <Button onClick={formRenderProps.onFormReset}>
+                                                Clear
+                                </Button>
+                                        </div>
+                                    </fieldset>
+                                </FormElement>
+                            )}
+                        />
                     </TabStripTab>
+                    <TabStripTab title="OTP Auth Servlet">
+                        <Form
+                            onSubmit={this.handleSubmitOTPAuthServlet}
+                            render={(formRenderProps) => (
+                                <FormElement style={{ width: 500 }} horizontal={true}>
+                                    <fieldset className={'k-form-fieldset'}>
+
+                                        <Field
+                                            id={'mode'}
+                                            name={'mode'}
+                                            label={'mode'}
+                                            hint={'Hint: Hint message aligned start'}
+                                            component={FormInput}
+                                            validator={requiredValidator}
+                                        />
+
+                                        <Field
+                                            id={'cardNum'}
+                                            name={'cardNum'}
+                                            label={'cardNum'}
+                                            hint={'Hint: Hint message aligned start'}
+                                            component={FormInput}
+                                            validator={requiredValidator}
+                                        />
+
+                                        <Field
+                                            id={'customerPin'}
+                                            name={'customerPin'}
+                                            label={'customerPin'}
+                                            hint={'Hint: Hint message aligned start'}
+                                            component={FormInput}
+                                            validator={requiredValidator}
+                                        />
+
+                                        <Field
+                                            id={'guid'}
+                                            name={'guid'}
+                                            label={'guid'}
+                                            hint={'Hint: Hint message aligned start'}
+                                            component={FormInput}
+                                            validator={requiredValidator}
+                                        />
+
+
+
+
+                                        <div className="k-form-buttons">
+                                            <Button
+                                                primary={true}
+                                                type={'submit'}
+                                                disabled={!formRenderProps.allowSubmit}
+                                            >
+                                                Submit
+                                </Button>
+                                            <Button onClick={formRenderProps.onFormReset}>
+                                                Clear
+                                </Button>
+                                        </div>
+                                    </fieldset>
+                                </FormElement>
+                            )}
+                        />
+                    </TabStripTab>
+
                 </TabStrip>
             </div>
 

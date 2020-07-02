@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import EcomTestClient from './EcomTestComponent/EcomTestClient';
+import { Main } from './Routing';
 
 function App() {
   return (
-    <>
-    <EcomTestClient />
-  </>
+    <div className="app">
+      <Main />
+    </div>
   );
 }
 

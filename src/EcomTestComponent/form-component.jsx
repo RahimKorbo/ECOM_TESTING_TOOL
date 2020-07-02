@@ -251,6 +251,38 @@ export const FormMaskedTextBox = (fieldRenderProps) => {
     );
 };
 
+export const FormMaskedTextBoxForPassword = (fieldRenderProps) => {
+    const { validationMessage, touched, label, id, valid, hint, optional, ...others } = fieldRenderProps;
+
+    const showValidationMessage = touched && validationMessage;
+    const showHint = !showValidationMessage && hint;
+    const hindId = showHint ? `${id}_hint` : '';
+    const errorId = showValidationMessage ? `${id}_error` : '';
+
+    return (
+        <FieldWrapper>
+            <Label editorId={id} editorValid={valid} optional={optional}>{label}</Label>
+            <div className={'k-form-field-wrap'}>
+                <MaskedTextBox
+                    ariaDescribedBy={`${hindId} ${errorId}`}
+                    valid={valid}
+                    id={id}
+                    {...others}
+                />
+                {
+                    showHint &&
+                    <Hint id={hindId}>{hint}</Hint>
+                }
+                {
+                    showValidationMessage &&
+                    <Error id={errorId}>{validationMessage}</Error>
+                }
+            </div>
+        </FieldWrapper>
+    );
+};
+
+
 export const FormTextArea = (fieldRenderProps) => {
     const { validationMessage, touched, label, id, valid, hint, optional, ...others } = fieldRenderProps;
 
